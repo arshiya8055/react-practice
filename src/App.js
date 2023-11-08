@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { PropsMain } from "./components/PropsMain";
+import { TodoList } from "./components/TodoList/TodoList";
+import { Card, CardContent } from "@mui/material";
+import { ApiFetch } from "./components/ApiFetching/ApiFetch";
+import { Landing } from "./components/Routing/Landing";
+import { configstore } from "./components/Redux/Store/configstore";
+import { Provider } from "react-redux";
 
 function App() {
+  const mystore=configstore()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={mystore}>
+      <Card>
+      <CardContent>
+        <Landing />
+      </CardContent>
+    </Card>
+    </Provider>
+    
   );
 }
 
